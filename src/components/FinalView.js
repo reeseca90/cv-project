@@ -9,10 +9,9 @@ class FinalView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.General = React.createRef();
-    this.ProfSum = React.createRef();
-    this.WorkHist = React.createRef();
-    this.Edu = React.createRef();
+    this.state = {
+      // this gets populated by general, profsum, workhist, edu
+    }
 
     this.tableData = this.tableData.bind(this);
   }
@@ -20,22 +19,25 @@ class FinalView extends React.Component {
   tableData(e) {
     e.preventDefault();
 
-    console.table(this.General.current.state);
-    console.table(this.ProfSum.current.state);
-    console.table(this.WorkHist.current.state);
-    console.table(this.Edu.current.state);
+    console.table(this.state);
 
+  }
+
+  handleCallback = (childData) => {
+    this.setState(childData);
   }
   
   render () {
     return (
       <div>
         <div id="inputs">
-          <General ref={this.General} />
-          <ProfSum ref={this.ProfSum} />
-          <WorkHist ref={this.WorkHist} />
-          <Edu ref={this.Edu} />
+          <General parentCallBack={this.handleCallback} />
+          <ProfSum parentCallBack={this.handleCallback} />
+          <WorkHist parentCallBack={this.handleCallback} />
+          <Edu parentCallBack={this.handleCallback} />
         </div>
+
+        <button onClick={this.tableData}>Table Data for Testing</button>
       </div>
     );
   }

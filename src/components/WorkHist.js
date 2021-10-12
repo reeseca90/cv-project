@@ -56,16 +56,12 @@ class WorkHist extends React.Component {
         id: uniqid()
       }
     });
-
-    console.table(this.state.duties);
   }
 
   // submit company, title and duties array only
   handleSubmit(e) {
     e.preventDefault();
-
-    console.table(this.state);
-    console.table(this.state.duties);
+    this.props.parentCallBack(this.state);
   }
 
   render() {

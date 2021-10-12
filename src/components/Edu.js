@@ -28,8 +28,7 @@ class Edu extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-
-    console.table(this.state);
+    this.props.parentCallBack(this.state);
   }
 
   render() {

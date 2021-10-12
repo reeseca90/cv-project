@@ -4,7 +4,7 @@ class General extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'cRAIG',
+      name: '',
       address: '',
       phone: '',
       email: ''
@@ -26,8 +26,7 @@ class General extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-
-    console.table(this.state);
+    this.props.parentCallBack(this.state);
   }
 
   render() {

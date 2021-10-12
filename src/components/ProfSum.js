@@ -55,15 +55,15 @@ class ProfSum extends React.Component {
         id: uniqid()
       }
     });
-
-    console.table(this.state.skills);
   }
 
   // submit blurb and skills array only
   handleSubmit(e) {
     e.preventDefault();
+
+    this.props.parentCallBack(this.state);
+
     console.table(this.state);
-    console.table(this.state.skills);
   }
 
   render() {
