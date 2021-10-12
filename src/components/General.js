@@ -4,7 +4,7 @@ class General extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      name: 'cRAIG',
       address: '',
       phone: '',
       email: ''

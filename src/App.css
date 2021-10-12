@@ -54,3 +54,7 @@
   width: 400px;
   margin-left: auto;  
 }
+
+.outputSection {
+  display: flex;
+}
