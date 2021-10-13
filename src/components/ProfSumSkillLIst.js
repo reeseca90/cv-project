@@ -12,7 +12,7 @@ const ProfSumSkillList = (props) => {
     <ul>
       {props.skills.map((skill) => {
         return (
-          <div>
+          <div className="oneLine">
             <li key={skill.id}>{skill.text}</li>
             <button id={skill.id} onClick={deleteSkillCallback}>Delete Skill</button>
           </div>

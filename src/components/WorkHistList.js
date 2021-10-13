@@ -12,7 +12,7 @@ const WorkHistList = (props) => {
     <ul>
       {props.duties.map((duty) => {
         return (
-          <div>
+          <div className="oneLine">
             <li key={duty.id}>{duty.duty}</li>
             <button id={duty.id} onClick={deleteDutyCallback}>Delete Duty</button>
           </div>

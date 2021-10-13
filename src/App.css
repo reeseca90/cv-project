@@ -54,9 +54,15 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   width: 600px;
   border-bottom: 2px solid black;
+}
+
+.oneLine {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
 }
 
 .inputSectionHeader {
