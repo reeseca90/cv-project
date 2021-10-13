@@ -34,6 +34,7 @@ class Edu extends React.Component {
   render() {
     return (
       <form id="edu" className="section">
+        <span className="inputSectionHeader">Education</span>
         <div className="inputArea">
           <label htmlFor="school">School Name: </label>
           <input name="school" onChange={this.handleInputChange} />

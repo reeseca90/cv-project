@@ -78,6 +78,7 @@ class WorkHist extends React.Component {
 
     return (
       <form id="workHist" className="section">
+        <span className="inputSectionHeader">Employment History</span>
         <div className="inputArea">
           <label htmlFor="company">Company/Organization: </label>
           <input name="company" onChange={this.handleInputChange} value={this.state.company} />
@@ -88,7 +89,7 @@ class WorkHist extends React.Component {
         </div>
         <div className="inputArea">
           <label htmlFor="newDuty">Duties/Responsibilities:</label>
-          <textarea name="newDuty" value={this.state.newDuty.duty} onChange={this.handleDutyChange}/>
+          <textarea rows="4" name="newDuty" value={this.state.newDuty.duty} onChange={this.handleDutyChange}/>
         </div>
         
         <button onClick={this.handleDutyArray}>Add Duty/Responsibility</button>

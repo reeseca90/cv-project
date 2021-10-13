@@ -41,7 +41,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div id="container">
         <div id="inputs">
           <General parentCallBack={this.handleCallback} />
           <ProfSum parentCallBack={this.handleCallback} />
@@ -49,9 +49,7 @@ class App extends React.Component {
           <Edu parentCallBack={this.handleCallback} />
         </div>
 
-        <button onClick={this.tableData}>show data</button>
         <button onClick={this.showFinalView}>Show Final View</button>
-        
         <FinalView data={this.state} />
       </div>
     );

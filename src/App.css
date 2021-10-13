@@ -1,3 +1,4 @@
+/* CLASS App ALSO INCLUDES ELEMENTS IN THE FinalView */
 .App {
   text-align: center;
 }
@@ -37,12 +38,31 @@
   }
 }
 
+#container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  align-items: center;
+  padding: 16px;
+}
+
+#container > button {
+  margin: 24px;
+}
+
 .section {
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 500px;
+  width: 600px;
+  border-bottom: 2px solid black;
+}
+
+.inputSectionHeader {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .inputArea {
@@ -55,20 +75,27 @@
   margin-left: auto;  
 }
 
+textarea {
+  width: 400px;
+  margin-left: auto;
+  
+}
+
 .outputSection {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  padding: 16px;
 }
 
-.sectionSub {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 500px;
-  border: 1px solid green;
-  border-radius: 5px;
+.sectionHeader {
+  font-size: 36px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 8px;
+  margin-bottom: 32px;
+  text-decoration: underline;
 }
 
 .pushRight {
@@ -77,4 +104,23 @@
 
 ul {
   list-style: none;
+}
+
+#finalView {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+#generalOutput {
+  text-align: center;
+}
+
+.place {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#skillsOutput {
+  margin-top: 16px;
 }

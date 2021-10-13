@@ -5,7 +5,7 @@ const FinalView = (props) => {
   const returnSkillList = () => {
     return (
       <div id="skillsOutput">
-        <p>Skills :</p>
+        <span className="place">Notable Skills :</span>
         <ul>
           {props.data.skills.map((skill) => {
             return (
@@ -20,7 +20,6 @@ const FinalView = (props) => {
   const returnDutyList = () => {
     return (
       <div id="dutyOutput">
-        <p>Duties and Responsibilities: </p>
         <ul>
           {props.data.duties.map((duty) => {
             return (
@@ -34,31 +33,33 @@ const FinalView = (props) => {
 
   const returnView = () => {
     return (
-      <div>
+      <div id="finalView">
 
         <div id="generalOutput" className="outputSection">
-          <p>{props.data.name}</p>
-          <p>{props.data.phone}</p>
-          <p>{props.data.email}</p>
-          <p>{props.data.address}</p>
+          <span className="sectionHeader">{props.data.name}</span>
+          <span>{props.data.address}</span>
+          <span>{props.data.phone}</span>
+          <span>{props.data.email}</span>
         </div>
 
         <div id="profSumOutput" className="outputSection">
-          <p>{props.data.blurb}</p>
+          <span className="App">{props.data.blurb}</span>
           {props.data.skills !== undefined ? returnSkillList() : null }
         </div>
 
         <div id="workHistOutput" className="outputSection">
-          <p>{props.data.company}</p>
-          <p>{props.data.title}</p>
+          <span className="sectionHeader">Employment History</span>
+          <span className="place">{props.data.company}</span>
+          <span>{props.data.title}: </span>
           {props.data.duties !== undefined ? returnDutyList() : null }
         </div>
 
         <div id="eduOutput" className="outputSection">
-          <p>{props.data.school}</p>
-          <p>{props.data.degree}</p>
-          <p>{props.data.years}</p>
-          <p>{props.data.gpa}</p>
+          <span className="sectionHeader">Education</span>
+          <span className="place">{props.data.school}</span>
+          <span>{props.data.years}</span>
+          <span>Major: {props.data.degree}</span>
+          <span>GPA: {props.data.gpa}</span>
         </div>
 
       </div>

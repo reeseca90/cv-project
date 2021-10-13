@@ -78,9 +78,10 @@ class ProfSum extends React.Component {
 
     return (
       <form id="profSum" className="section">
+        <span className="inputSectionHeader">Professional Summary</span>
         <div className="inputArea">
           <label htmlFor="blurb">Summary: </label>
-          <textarea name="blurb" onChange={this.handleInputChange} />
+          <textarea rows="4" name="blurb" onChange={this.handleInputChange} />
         </div>
         <div className="inputArea">
           <label htmlFor="newSkill">Skills: </label>
