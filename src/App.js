@@ -5,12 +5,14 @@ import General from "./components/General";
 import ProfSum from './components/ProfSum';
 import WorkHist from './components/WorkHist';
 import Edu from './components/Edu';
+import FinalView from './components/FinalView';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      showFinal: false,
       // this gets populated by general, profsum, workhist, edu
     }
 
@@ -27,6 +29,16 @@ class App extends React.Component {
     this.setState(childData);
   }
 
+  returnFinalView = () => {
+    return 
+  }
+
+  showFinalView = () => {
+    this.setState({
+      showFinal: true
+    });
+  }
+
   render () {
     return (
       <div>
@@ -37,7 +49,10 @@ class App extends React.Component {
           <Edu parentCallBack={this.handleCallback} />
         </div>
 
-        <button onClick={this.tableData}>Table Data for Testing</button>
+        <button onClick={this.tableData}>show data</button>
+        <button onClick={this.showFinalView}>Show Final View</button>
+        
+        <FinalView data={this.state} />
       </div>
     );
   }

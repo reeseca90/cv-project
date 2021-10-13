@@ -20,6 +20,7 @@ class WorkHist extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDutyArray = this.handleDutyArray.bind(this);
     this.handleDutyChange = this.handleDutyChange.bind(this);
+    this.handleDeleteCallback = this.handleDeleteCallback.bind(this);
   }
 
   // for blurb only
@@ -64,6 +65,14 @@ class WorkHist extends React.Component {
     this.props.parentCallBack(this.state);
   }
 
+  handleDeleteCallback(childData) {
+    this.setState({
+      duties: this.state.duties.filter(function(duty) {
+        return duty.id !== childData;
+      })
+    });
+  }
+
   render() {
     const duties = this.state.duties;
 
@@ -84,7 +93,7 @@ class WorkHist extends React.Component {
         
         <button onClick={this.handleDutyArray}>Add Duty/Responsibility</button>
 
-        <WorkHistList duties={duties} />
+        <WorkHistList duties={duties} deleteDuty={this.handleDeleteCallback} />
 
         <button onClick={this.handleSubmit}>Save Section</button>
       </form>

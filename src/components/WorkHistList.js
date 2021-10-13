@@ -1,15 +1,25 @@
 import React from "react";
 
 const WorkHistList = (props) => {
-  const { duties } = props;
+
+  function deleteDutyCallback(e) {
+    e.preventDefault();
+    const id = e.target.id;
+    props.deleteDuty(id);
+  }
 
   return (
     <ul>
-      {duties.map((duty) => {
-        return <li key={duty.id}>{duty.duty}</li>
+      {props.duties.map((duty) => {
+        return (
+          <div>
+            <li key={duty.id}>{duty.duty}</li>
+            <button id={duty.id} onClick={deleteDutyCallback}>Delete Duty</button>
+          </div>
+        )
       })}
     </ul>
-  )
+  );
 }
 
 export default WorkHistList;

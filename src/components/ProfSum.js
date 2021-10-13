@@ -19,6 +19,7 @@ class ProfSum extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSkillArray = this.handleSkillArray.bind(this);
     this.handleSkillChange = this.handleSkillChange.bind(this);
+    this.handleDeleteCallback = this.handleDeleteCallback.bind(this);
   }
 
   // for blurb only
@@ -64,6 +65,14 @@ class ProfSum extends React.Component {
     this.props.parentCallBack(this.state);
   }
 
+  handleDeleteCallback(childData) {
+    this.setState({
+      skills: this.state.skills.filter(function(skill) {
+        return skill.id !== childData;
+      })
+    });
+  }
+
   render() {
     const skills = this.state.skills;
 
@@ -79,7 +88,7 @@ class ProfSum extends React.Component {
         </div>
         <button onClick={this.handleSkillArray}>Add New Skill</button>
 
-        <ProfSumSkillList skills={skills} />
+        <ProfSumSkillList skills={skills} deleteSkill={this.handleDeleteCallback} />
 
         <button onClick={this.handleSubmit}>Save Section</button>
       </form>

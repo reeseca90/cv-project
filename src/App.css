@@ -57,6 +57,8 @@
 
 .outputSection {
   display: flex;
+  flex-direction: column;
+  border: 1px solid black;
 }
 
 .sectionSub {
@@ -67,4 +69,12 @@
   width: 500px;
   border: 1px solid green;
   border-radius: 5px;
+}
+
+.pushRight {
+  margin-left: auto;
+}
+
+ul {
+  list-style: none;
 }
