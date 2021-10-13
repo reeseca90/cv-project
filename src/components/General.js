@@ -31,7 +31,8 @@ class General extends React.Component {
 
   render() {
     return( 
-      <form id="general" className="section">
+      <div className="section">
+      <form id="general" >
         <div className="inputArea">
           <label htmlFor="name">Name: </label>
           <input name="name" onChange={this.handleInputChange} />
@@ -54,6 +55,7 @@ class General extends React.Component {
 
         <button name="submit" onClick={this.handleSubmit}>Save Section</button>
       </form>
+    </div>
     );
   }
 }

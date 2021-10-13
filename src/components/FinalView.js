@@ -31,10 +31,26 @@ const FinalView = (props) => {
     )
   }
 
+  const returnEduList = () => {
+    return (
+      <div>
+        {props.data.edu.map((edu) => {
+          return (
+            <div id={edu.id} className="eduList">
+              <span className="place">{edu.school}</span>
+              <span>{edu.years}</span>
+              <span>Major: {edu.degree}</span>
+              <span>GPA: {edu.gpa}</span>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
   const returnView = () => {
     return (
       <div id="finalView">
-
         <div id="generalOutput" className="outputSection">
           <span className="sectionHeader">{props.data.name}</span>
           <span>{props.data.address}</span>
@@ -43,6 +59,7 @@ const FinalView = (props) => {
         </div>
 
         <div id="profSumOutput" className="outputSection">
+          <span className="sectionHeader">About Me:</span>
           <span className="App">{props.data.blurb}</span>
           {props.data.skills !== undefined ? returnSkillList() : null }
         </div>
@@ -56,10 +73,7 @@ const FinalView = (props) => {
 
         <div id="eduOutput" className="outputSection">
           <span className="sectionHeader">Education</span>
-          <span className="place">{props.data.school}</span>
-          <span>{props.data.years}</span>
-          <span>Major: {props.data.degree}</span>
-          <span>GPA: {props.data.gpa}</span>
+          {props.data.edu !== undefined ? returnEduList() : null }
         </div>
 
       </div>

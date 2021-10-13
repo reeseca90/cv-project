@@ -77,27 +77,29 @@ class WorkHist extends React.Component {
     const duties = this.state.duties;
 
     return (
-      <form id="workHist" className="section">
-        <span className="inputSectionHeader">Employment History</span>
-        <div className="inputArea">
-          <label htmlFor="company">Company/Organization: </label>
-          <input name="company" onChange={this.handleInputChange} value={this.state.company} />
-        </div>
-        <div className="inputArea">
-          <label htmlFor="title">Job Title: </label>
-          <input name="title" onChange={this.handleInputChange} value={this.state.title} />
-        </div>
-        <div className="inputArea">
-          <label htmlFor="newDuty">Duties/Responsibilities:</label>
-          <textarea rows="4" name="newDuty" value={this.state.newDuty.duty} onChange={this.handleDutyChange}/>
-        </div>
-        
-        <button onClick={this.handleDutyArray}>Add Duty/Responsibility</button>
+      <div className="section">
+        <form id="workHist" >
+          <span className="inputSectionHeader">Employment History</span>
+          <div className="inputArea">
+            <label htmlFor="company">Company/Organization: </label>
+            <input name="company" onChange={this.handleInputChange} value={this.state.company} />
+          </div>
+          <div className="inputArea">
+            <label htmlFor="title">Job Title: </label>
+            <input name="title" onChange={this.handleInputChange} value={this.state.title} />
+          </div>
+          <div className="inputArea">
+            <label htmlFor="newDuty">Duties/Responsibilities:</label>
+            <textarea rows="4" name="newDuty" value={this.state.newDuty.duty} onChange={this.handleDutyChange}/>
+          </div>
+          
+          <button onClick={this.handleDutyArray}>Add Duty/Responsibility</button>
 
-        <WorkHistList duties={duties} deleteDuty={this.handleDeleteCallback} />
+          <WorkHistList duties={duties} deleteDuty={this.handleDeleteCallback} />
 
-        <button onClick={this.handleSubmit}>Save Section</button>
-      </form>
+          <button onClick={this.handleSubmit}>Save Section</button>
+        </form>
+      </div>
     );
   }
 }

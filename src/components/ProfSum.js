@@ -77,22 +77,24 @@ class ProfSum extends React.Component {
     const skills = this.state.skills;
 
     return (
-      <form id="profSum" className="section">
-        <span className="inputSectionHeader">Professional Summary</span>
-        <div className="inputArea">
-          <label htmlFor="blurb">Summary: </label>
-          <textarea rows="4" name="blurb" onChange={this.handleInputChange} />
-        </div>
-        <div className="inputArea">
-          <label htmlFor="newSkill">Skills: </label>
-          <input name="newSkill" value={this.state.newSkill.text} onChange={this.handleSkillChange} />
-        </div>
-        <button onClick={this.handleSkillArray}>Add New Skill</button>
+      <div className="section">
+        <form id="profSum" >
+          <span className="inputSectionHeader">Professional Summary</span>
+          <div className="inputArea">
+            <label htmlFor="blurb">Summary: </label>
+            <textarea rows="4" name="blurb" onChange={this.handleInputChange} />
+          </div>
+          <div className="inputArea">
+            <label htmlFor="newSkill">Skills: </label>
+            <input name="newSkill" value={this.state.newSkill.text} onChange={this.handleSkillChange} />
+          </div>
+          <button onClick={this.handleSkillArray}>Add New Skill</button>
 
-        <ProfSumSkillList skills={skills} deleteSkill={this.handleDeleteCallback} />
+          <ProfSumSkillList skills={skills} deleteSkill={this.handleDeleteCallback} />
 
-        <button onClick={this.handleSubmit}>Save Section</button>
-      </form>
+          <button onClick={this.handleSubmit}>Save Section</button>
+        </form>
+      </div>
     );
   }
 }

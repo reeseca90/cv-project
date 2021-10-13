@@ -1,3 +1,9 @@
+#root {
+  display: flex;
+  justify-content: center;
+  min-width: 600px;
+}
+
 /* CLASS App ALSO INCLUDES ELEMENTS IN THE FinalView */
 .App {
   text-align: center;
@@ -90,7 +96,6 @@ textarea {
 .outputSection {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   padding: 16px;
 }
 
@@ -100,7 +105,7 @@ textarea {
   font-style: italic;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   text-decoration: underline;
 }
 
@@ -116,6 +121,7 @@ ul {
   display: flex;
   flex-direction: column;
   max-width: 800px;
+  border: 1px solid black;
 }
 
 #generalOutput {
@@ -129,4 +135,15 @@ ul {
 
 #skillsOutput {
   margin-top: 16px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.eduList {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
 }

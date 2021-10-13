@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import General from "./components/General";
 import ProfSum from './components/ProfSum';
