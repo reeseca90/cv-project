@@ -20,7 +20,6 @@ class FinalView extends React.Component {
     e.preventDefault();
 
     console.table(this.state);
-
   }
 
   handleCallback = (childData) => {

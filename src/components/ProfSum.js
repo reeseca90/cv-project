@@ -62,8 +62,6 @@ class ProfSum extends React.Component {
     e.preventDefault();
 
     this.props.parentCallBack(this.state);
-
-    console.table(this.state);
   }
 
   render() {
