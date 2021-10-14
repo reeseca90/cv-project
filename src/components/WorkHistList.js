@@ -9,16 +9,18 @@ const WorkHistList = (props) => {
   }
 
   return (
-    <ul>
-      {props.duties.map((duty) => {
+    <div>
+      {props.works.map((work) => {
         return (
-          <div className="oneLine">
-            <li key={duty.id}>{duty.duty}</li>
-            <button id={duty.id} onClick={deleteDutyCallback}>Delete Duty</button>
+          <div className="flex">
+            <span>Company: {work.company}</span>            
+            <span>Title: {work.title}</span>
+            <span>Duties: {work.duty}</span>
+            <button id={work.id} onClick={deleteDutyCallback}>Delete Work Experience</button>
           </div>
         )
       })}
-    </ul>
+    </div>
   );
 }
 

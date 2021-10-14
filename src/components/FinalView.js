@@ -17,16 +17,18 @@ const FinalView = (props) => {
     );
   };
 
-  const returnDutyList = () => {
+  const returnWorksList = () => {
     return (
-      <div id="dutyOutput">
-        <ul>
-          {props.data.duties.map((duty) => {
-            return (
-              <li key={duty.id}>{duty.duty}</li>
-            )
-          })}
-        </ul>
+      <div>
+        {props.data.works.map((work) => {
+          return (
+            <div id={work.id} className="eduList">
+              <span className="place">Company: {work.company}</span>
+              <span>Title: {work.title}</span>
+              <span>Duties: {work.duty}</span>
+            </div>
+          )
+        })}
       </div>
     )
   }
@@ -66,9 +68,7 @@ const FinalView = (props) => {
 
         <div id="workHistOutput" className="outputSection">
           <span className="sectionHeader">Employment History</span>
-          <span className="place">{props.data.company}</span>
-          <span>{props.data.title}: </span>
-          {props.data.duties !== undefined ? returnDutyList() : null }
+          {props.data.works !== undefined ? returnWorksList() : null }
         </div>
 
         <div id="eduOutput" className="outputSection">
@@ -80,6 +80,8 @@ const FinalView = (props) => {
     )
   }
   
+  // don't display the final view until user clicks the button to do it
+  // state for this is in App.js
   return (
     <div>
     {props.data.showFinal === true ? returnView() : null }

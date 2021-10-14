@@ -1,107 +1,107 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import uniqid from 'uniqid';
 import WorkHistList from './WorkHistList';
 
-class WorkHist extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      company: '',
-      title: '',
-      newDuty: {
-        duty: '',
-        id: uniqid()
-      },
-      duties: []
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDutyArray = this.handleDutyArray.bind(this);
-    this.handleDutyChange = this.handleDutyChange.bind(this);
-    this.handleDeleteCallback = this.handleDeleteCallback.bind(this);
-  }
+const WorkHist = (props) => {
+  const [newWork, setNewWork] = useState({
+    company: '',
+    title: '',
+    duty: '',
+    id: uniqid()
+  });
+  const [works, setWorks] = useState([]);
 
   // for blurb only
-  handleInputChange(e) {
-    const target = e.target;
-    const name = target.name;
-    const input = target.value;
+  const handleCompanyChange = (e) => {
+    const holdTitle = newWork.title;
+    const holdDuty = newWork.duty;
+    const holdID = newWork.id;
 
-    this.setState({
-      [name]: input
+    setNewWork({
+      company: e.target.value,
+      title: holdTitle,
+      duty: holdDuty,
+      id: holdID
+    });
+  }
+
+  const handleTitleChange = (e) => {
+    const holdCompany = newWork.company;
+    const holdDuty = newWork.duty;
+    const holdID = newWork.id;
+
+    setNewWork({
+      company: holdCompany,
+      title: e.target.value,
+      duty: holdDuty,
+      id: holdID
     });
   }
 
   // for typing in a new duty
-  handleDutyChange(e) {
-    const holdID = this.state.newDuty.id;
+  const handleDutyChange = (e) => {
+    const holdCompany = newWork.company;
+    const holdTitle = newWork.title;
+    const holdID = newWork.id;
 
-    this.setState({
-      newDuty: {
-        duty: e.target.value,
-        id: holdID
-      }
+    setNewWork({
+      company: holdCompany,
+      title: holdTitle,
+      duty: e.target.value,
+      id: holdID
     });
   }
 
   // for add duty button
-  handleDutyArray(e) {
+  const handleWorkArray = (e) => {
     e.preventDefault();
 
-    this.setState({
-      duties: this.state.duties.concat(this.state.newDuty),
-      newDuty: { 
-        duty: '',
-        id: uniqid()
-      }
+    setWorks(works.concat(newWork));
+    setNewWork({
+      company: '',
+      title: '',
+      duty: '',
+      id: uniqid()
     });
   }
 
   // submit company, title and duties array only
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.parentCallBack(this.state);
+    props.parentCallBack({works});
   }
 
-  handleDeleteCallback(childData) {
-    this.setState({
-      duties: this.state.duties.filter(function(duty) {
-        return duty.id !== childData;
-      })
-    });
+  const handleDeleteCallback = (childData) => {
+    setWorks(works.filter(function(work) {
+      return work.id !== childData;
+    }));
   }
 
-  render() {
-    const duties = this.state.duties;
+  return (
+    <div className="section">
+      <form id="workHist" >
+        <span className="inputSectionHeader">Employment History</span>
+        <div className="inputArea">
+          <label htmlFor="company">Company/Organization: </label>
+          <input name="company" onChange={handleCompanyChange} value={newWork.company} />
+        </div>
+        <div className="inputArea">
+          <label htmlFor="title">Job Title: </label>
+          <input name="title" onChange={handleTitleChange} value={newWork.title} />
+        </div>
+        <div className="inputArea">
+          <label htmlFor="newDuty">Duties/Responsibilities:</label>
+          <textarea rows="4" name="newDuty" value={newWork.duty} onChange={handleDutyChange}/>
+        </div>
+        
+        <button onClick={handleWorkArray}>Add Work Experience</button>
 
-    return (
-      <div className="section">
-        <form id="workHist" >
-          <span className="inputSectionHeader">Employment History</span>
-          <div className="inputArea">
-            <label htmlFor="company">Company/Organization: </label>
-            <input name="company" onChange={this.handleInputChange} value={this.state.company} />
-          </div>
-          <div className="inputArea">
-            <label htmlFor="title">Job Title: </label>
-            <input name="title" onChange={this.handleInputChange} value={this.state.title} />
-          </div>
-          <div className="inputArea">
-            <label htmlFor="newDuty">Duties/Responsibilities:</label>
-            <textarea rows="4" name="newDuty" value={this.state.newDuty.duty} onChange={this.handleDutyChange}/>
-          </div>
-          
-          <button onClick={this.handleDutyArray}>Add Duty/Responsibility</button>
+        <WorkHistList works={works} deleteDuty={handleDeleteCallback} />
 
-          <WorkHistList duties={duties} deleteDuty={this.handleDeleteCallback} />
-
-          <button onClick={this.handleSubmit}>Save Section</button>
-        </form>
-      </div>
-    );
-  }
+        <button onClick={handleSubmit}>Save Section</button>
+      </form>
+    </div>
+  );
 }
 
 export default WorkHist;
