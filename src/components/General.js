@@ -1,63 +1,64 @@
-import React from 'react';
+import { useState } from 'react';
 
-class General extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      address: '',
-      phone: '',
-      email: ''
-    };
+const General = (props) => {
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   }
 
-  handleInputChange(e) {
-    const target = e.target;
-    const name = target.name;
-    const input = target.value;
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
+  }
 
-    this.setState({
-      [name]: input
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value); 
+  }
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.parentCallBack({
+      name,
+      address,
+      phone,
+      email
     });
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.parentCallBack(this.state);
-  }
+  return( 
+    <div className="section">
+    <form id="general" >
+      <div className="inputArea">
+        <label htmlFor="name">Name: </label>
+        <input name="name" onChange={handleNameChange} />
+      </div>
 
-  render() {
-    return( 
-      <div className="section">
-      <form id="general" >
-        <div className="inputArea">
-          <label htmlFor="name">Name: </label>
-          <input name="name" onChange={this.handleInputChange} />
-        </div>
+      <div className="inputArea">
+        <label htmlFor="address">Address: </label>
+        <input name="address" onChange={handleAddressChange} />
+      </div>
 
-        <div className="inputArea">
-          <label htmlFor="address">Address: </label>
-          <input name="address" onChange={this.handleInputChange} />
-        </div>
+      <div className="inputArea">
+        <label htmlFor="phone">Phone: </label>
+        <input name="phone" onChange={handlePhoneChange} />
+      </div>
 
-        <div className="inputArea">
-          <label htmlFor="phone">Phone: </label>
-          <input name="phone" onChange={this.handleInputChange} />
-        </div>
+      <div className="inputArea">
+        <label htmlFor="email">Email: </label>
+        <input name="email" onChange={handleEmailChange} />
+      </div>
 
-        <div className="inputArea">
-          <label htmlFor="email">Email: </label>
-          <input name="email" onChange={this.handleInputChange} />
-        </div>
-
-        <button name="submit" onClick={this.handleSubmit}>Save Section</button>
-      </form>
-    </div>
-    );
-  }
+      <button name="submit" onClick={handleSubmit}>Save Section</button>
+    </form>
+  </div>
+  );
 }
 
 export default General;

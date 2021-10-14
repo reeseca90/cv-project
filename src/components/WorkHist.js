@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect } from "react";
 import uniqid from 'uniqid';
 import WorkHistList from './WorkHistList';
 
