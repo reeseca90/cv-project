@@ -147,3 +147,7 @@ ul {
   flex-direction: column;
   margin: 16px;
 }
+
+.buttons button {
+  margin: 20px;
+}

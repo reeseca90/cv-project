@@ -5,6 +5,7 @@ import ProfSum from './components/ProfSum';
 import WorkHist from './components/WorkHist';
 import Edu from './components/Edu';
 import FinalView from './components/FinalView';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,14 +15,6 @@ class App extends React.Component {
       showFinal: false,
       // this gets populated by general, profsum, workhist, edu
     }
-
-    this.tableData = this.tableData.bind(this);
-  }
-
-  tableData(e) {
-    e.preventDefault();
-
-    console.table(this.state);
   }
 
   handleCallback = (childData) => {
@@ -36,6 +29,34 @@ class App extends React.Component {
     this.setState({
       showFinal: true
     });
+    console.log(this.state);
+  }
+
+  postPDF = (e) => {
+    e.preventDefault();
+
+    const postBody = {
+      name: this.state.name,
+      address: this.state.address,
+      phone: this.state.phone,
+      email: this.state.email,
+      summary: this.state.blurb,
+      allSkills: JSON.stringify(this.state.skills),
+      workHist: JSON.stringify(this.state.works),
+      edu: JSON.stringify(this.state.edu)
+    }
+
+    console.log(postBody);
+
+    if (this.state.showFinal === true) {
+      axios.post('/api/', {
+        postBody
+      })
+      .then (() => {
+        console.log('Sent');
+      })
+    }
+    
   }
 
   render () {
@@ -48,7 +69,11 @@ class App extends React.Component {
           <Edu parentCallBack={this.handleCallback} />
         </div>
 
-        <button onClick={this.showFinalView}>Show Final View</button>
+        <div className='buttons'>
+          <button onClick={this.showFinalView}>Show Final View</button>
+          <button onClick={this.postPDF}>Generate PDF</button>
+        </div>
+
         <FinalView data={this.state} />
       </div>
     );
