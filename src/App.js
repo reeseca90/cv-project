@@ -5,7 +5,7 @@ import ProfSum from './components/ProfSum';
 import WorkHist from './components/WorkHist';
 import Edu from './components/Edu';
 import FinalView from './components/FinalView';
-import axios from 'axios';
+import axios from 'axios'; 
 
 class App extends React.Component {
   constructor(props) {
@@ -49,15 +49,16 @@ class App extends React.Component {
     console.log(postBody);
 
     if (this.state.showFinal === true) {
-      axios.post('/api/', {
+      axios.post('/api/pdf', {
         postBody
       })
-      .then (() => {
+      .then(() => {
         console.log('Sent');
+        window.location.href = '/api/getpdf';
       })
     }
-    
   }
+  
 
   render () {
     return (
